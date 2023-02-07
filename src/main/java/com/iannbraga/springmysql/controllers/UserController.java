@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/v1")
 @AllArgsConstructor
@@ -20,6 +22,10 @@ public class UserController {
         return userService.save(user);
     }
 
+    @GetMapping("/listAll")
+    public Iterable<User> listAll(){
+        return userService.listAll();
+    }
     @PostMapping("/{id}")
     public User findById(@PathVariable Long id){
         return userService.findById(id);
